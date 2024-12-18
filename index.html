@@ -70,6 +70,49 @@
             width: 100%;
         }
 
+        /* Burger Menu */
+        .burger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 25px;
+            height: 20px;
+            cursor: pointer;
+        }
+        .burger div {
+            width: 100%;
+            height: 3px;
+            background: #fff;
+            transition: all 0.3s ease;
+        }
+        .nav-links {
+            display: flex;
+        }
+        .nav-links.active {
+            display: flex;
+            flex-direction: column;
+            background: rgba(0, 0, 0, 0.8);
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            width: 200px;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: right;
+            z-index: 999;
+        }
+        @media (max-width: 768px) {
+            .burger {
+                display: flex;
+            }
+            .nav-links {
+                display: none;
+            }
+            .nav-links li {
+                margin: 15px 0;
+            }
+        }
+
         section {
             height: 100vh;
             display: flex;
@@ -116,33 +159,38 @@
             transform: scale(1.1);
         }
 
-        /* Cube Animation */
-        .cube {
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(5px);
-            animation: float 6s infinite ease-in-out;
-            transform: rotate(45deg);
-        }
-        .cube1 { top: 10%; left: 20%; animation-delay: 0s; }
-        .cube2 { top: 60%; left: 70%; animation-delay: 1.5s; }
-        .cube3 { top: 30%; left: 80%; animation-delay: 3s; }
-        .cube4 { top: 80%; left: 10%; animation-delay: 4.5s; }
-        .cube5 { top: 40%; left: 50%; animation-delay: 6s; }
-
-        @keyframes float {
-            0% { transform: translate(0, 0) rotate(45deg); }
-            50% { transform: translate(20px, 20px) rotate(135deg); }
-            100% { transform: translate(0, 0) rotate(225deg); }
+        /* Responsive Glass Card */
+        @media (max-width: 768px) {
+            .glass-card {
+                padding: 30px;
+            }
+            .glass-card h1 {
+                font-size: 2rem;
+            }
+            .glass-card p {
+                font-size: 1rem;
+            }
+            .btn {
+                font-size: 0.9rem;
+                padding: 10px 20px;
+            }
         }
 
-        /* Section Colors */
-        #home { background: linear-gradient(135deg, #1a1a1a, #2c2c2c); }
-        #about { background: linear-gradient(135deg, #2c2c2c, #444); }
-        #contact { background: linear-gradient(135deg, #444, #1a1a1a); }
+        @media (max-width: 480px) {
+            .glass-card {
+                padding: 20px;
+            }
+            .glass-card h1 {
+                font-size: 1.8rem;
+            }
+            .glass-card p {
+                font-size: 0.9rem;
+            }
+            .btn {
+                font-size: 0.8rem;
+                padding: 8px 16px;
+            }
+        }
 
         @keyframes fadeIn {
             from { opacity: 0; transform: scale(0.8); }
@@ -154,19 +202,17 @@
     <!-- Navigation -->
     <nav>
         <div class="logo">GoFlexer</div>
-        <ul>
+        <div class="burger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
-
-    <!-- Floating Cubes -->
-    <div class="cube cube1"></div>
-    <div class="cube cube2"></div>
-    <div class="cube cube3"></div>
-    <div class="cube cube4"></div>
-    <div class="cube cube5"></div>
 
     <!-- Sections -->
     <section id="home">
@@ -190,5 +236,12 @@
             <p>If you have any questions or need assistance, feel free to reach out at <strong>support@goflexer.com</strong>.</p>
         </div>
     </section>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
