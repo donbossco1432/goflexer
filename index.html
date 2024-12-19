@@ -15,7 +15,7 @@
         }
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #1a1a1a, #2c2c2c);
+            background: linear-gradient(135deg, #000000, #2c2c2c);
             min-height: 100vh;
             color: #fff;
             overflow-x: hidden;
@@ -196,6 +196,32 @@
             from { opacity: 0; transform: scale(0.8); }
             to { opacity: 1; transform: scale(1); }
         }
+
+        /* Updated CSS for the background image with spinning effect */
+        .background-image {
+            background-image: url('public/images/backlogo.png'); /* Ensure this path is correct */
+            position: fixed; /* Use fixed to keep it in place */
+            top: 50%; /* Center vertically */
+            left: 50%; /* Center horizontally */
+            width: 800px; /* Set a smaller width */
+            height: 800px; /* Set a smaller height */
+            z-index: -1; /* Ensure it is behind the welcome box */
+            background-size: contain; /* Adjust size to fit within the div */
+            background-repeat: no-repeat; /* Prevent repeating */
+            animation: spin 10s linear infinite; /* Apply spinning animation */
+            transform: translate(-50%, -50%); /* Center the image */
+            opacity: 80%;
+        }
+
+        /* Define the spinning animation */
+        @keyframes spin {
+            from {
+                transform: translate(-50%, -50%) rotate(0deg); /* Start at 0 degrees */
+            }
+            to {
+                transform: translate(-50%, -50%) rotate(360deg); /* End at 360 degrees */
+            }
+        }
     </style>
 </head>
 <body>
@@ -216,6 +242,7 @@
 
     <!-- Sections -->
     <section id="home">
+        <div class="background-image"></div>
         <div class="glass-card">
             <h1>Welcome to GoFlexer</h1>
             <p>We are launching soon! Get ready to experience the easiest way to book Amazon blocks using our App.</p>
